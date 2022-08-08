@@ -1,61 +1,48 @@
 package com.cscc43.mybnb.user;
 
-import java.time.LocalDate;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Entity(name = "Users")
+import java.sql.Date;
+
 public class User {
-    @Id
-    private String username;
+
+    private String userName;
     private String name;
-    // addresss
-    private String postalCode;
+    private String postCode;
     private String city;
     private String country;
-    // private credentials
     private String sin;
-    private LocalDate dateOfBirth;
-    private Boolean isRenter;
-    private Boolean isHost;
+    private Date dob;
 
-    public User(String username, String name, String postalCode, String city, String country, String sin, LocalDate dateOfBirth, Boolean isRenter, Boolean isHost) {
-        this.username = username;
+    public User(String userName, String name, String postCode, String city, String country, String sin, Date dob) {
+        this.userName = userName;
         this.name = name;
-        this.postalCode = postalCode;
+        this.postCode = postCode;
         this.city = city;
         this.country = country;
         this.sin = sin;
-        this.dateOfBirth = dateOfBirth;
-        this.isRenter = isRenter;
-        this.isHost = isHost;
+        this.dob = dob;
     }
 
-    public User() {
+    @Override
+    public String toString() {
+        return "User{" +
+                "userName='" + userName + '\'' +
+                ", name='" + name + '\'' +
+                ", postCode='" + postCode + '\'' +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                ", sin='" + sin + '\'' +
+                ", date of birth=" + dob +
+                '}';
     }
 
-    public Boolean getRenter() {
-        return isRenter;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setRenter(Boolean renter) {
-        isRenter = renter;
-    }
-
-    public Boolean getHost() {
-        return isHost;
-    }
-
-    public void setHost(Boolean host) {
-        isHost = host;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getName() {
@@ -66,12 +53,12 @@ public class User {
         this.name = name;
     }
 
-    public String getPostalCode() {
-        return postalCode;
+    public String getPostCode() {
+        return postCode;
     }
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
     }
 
     public String getCity() {
@@ -98,24 +85,11 @@ public class User {
         this.sin = sin;
     }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
+    public Date getDate() {
+        return dob;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", name='" + name + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                ", city='" + city + '\'' +
-                ", country='" + country + '\'' +
-                ", sin='" + sin + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                '}';
+    public void setDate(Date date) {
+        this.dob = date;
     }
 }
